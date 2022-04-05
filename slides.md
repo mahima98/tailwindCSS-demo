@@ -5,11 +5,11 @@ theme: seriph
 # like them? see https://unsplash.com/collections/94734566/slidev
 background: https://source.unsplash.com/collection/94734566/1920x1080
 # apply any windi css classes to the current slide
-class: 'text-center'
+class: "text-center"
 # https://sli.dev/custom/highlighters.html
 highlighter: shiki
 # show line numbers in code blocks
-lineNumbers: false
+lineNumbers: true
 # some information about the slides, markdown enabled
 info: |
   ## Slidev Starter Template
@@ -21,13 +21,16 @@ drawings:
   persist: false
 ---
 
-# Welcome to Slidev
+# Tailwind CSS
 
-Presentation slides for developers
+An introduction to tailwind css and
+new features added to Tailwind CSS v3
+
+Presented by Mahima Ramgolam
 
 <div class="pt-12">
   <span @click="$slidev.nav.next" class="px-2 py-1 rounded cursor-pointer" hover="bg-white bg-opacity-10">
-    Press Space for next page <carbon:arrow-right class="inline"/>
+    <carbon:arrow-right class="inline"/>
   </span>
 </div>
 
@@ -47,22 +50,22 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 ---
 
-# What is Slidev?
-
-Slidev is a slides maker and presenter designed for developers, consist of the following features
-
-- 📝 **Text-based** - focus on the content with Markdown, and then style them later
-- 🎨 **Themable** - theme can be shared and used with npm packages
-- 🧑‍💻 **Developer Friendly** - code highlighting, live coding with autocompletion
-- 🤹 **Interactive** - embedding Vue components to enhance your expressions
-- 🎥 **Recording** - built-in recording and camera view
-- 📤 **Portable** - export into PDF, PNGs, or even a hostable SPA
-- 🛠 **Hackable** - anything possible on a webpage
+# What is Tailwind Css?
 
 <br>
+
+- ## CSS framework made up of utility classes
 <br>
 
-Read more about [Why Slidev?](https://sli.dev/guide/why)
+```html
+<div class="px-4 py-2 text-red-100"></div>
+```
+
+<br>
+
+- ## Much lower-level than Bootstrap, Materialize etc..
+<br>
+<br>
 
 <!--
 You can have `style` tag in markdown to override the style for the current page.
@@ -79,7 +82,122 @@ h1 {
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 }
+
+h2 {
+  opacity: 75%;
+}
 </style>
+
+---
+
+# Example/
+
+<div grid="~ cols-3 gap-4">
+<div grid="col-span-2">
+
+#### Desktop version
+
+<img src="/desktopflex.png" class="h-40 rounded shadow" />
+
+</div>
+<div>
+
+#### Mobile version
+
+<img src="/mobileflex.png" class="h-40 rounded shadow" />
+
+</div>
+</div>
+
+<br>
+<br>
+
+#### HTML
+
+```html
+<html>
+  <body>
+    <div class="wrapper">
+      <button class="myButton">Hover me</button>
+    </div>
+  </body>
+</html>
+```
+
+---
+
+<div grid="~ cols-2 gap-4">
+ 
+ <div>
+ 
+ ## using normal css
+
+ <br>
+
+```html
+<style>
+  .wrapper {
+    display: flex;
+    width: 100%;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .myButton {
+    padding: 10px 20px;
+    background-color: rgb(101, 238, 220);
+    border-radius: 10px;
+    font-size: 25px;
+  }
+  .myButton:hover {
+    background-color: rgb(13, 85, 85);
+  }
+
+  @media (max-width: 800px) {
+    .myButton {
+      padding: 8px 16px;
+      background-color: pink;
+      font-size: 16px;
+    }
+  }
+</style>
+```
+
+ </div>
+
+ <div>
+
+## Using Tailwind Css
+
+<br>
+
+```html
+<div class="wrapper flex w-full h-96 justify-center items-center">
+  <button
+    class="myButton px-4 py-2 md:px-8 md:py-4 bg-red-300 rounded-md hover:bg-teal-400 md:bg-blue-200 md:text-xl"
+  >
+    Hover me
+  </button>
+</div>
+```
+
+#### or
+
+```html
+<style>
+  .wrapper {
+    @apply flex w-full h-96 justify-center items-center;
+  }
+
+  .myButton {
+    @apply px-4 py-2 md:px-8 md:py-4 bg-red-300 rounded-md hover:bg-teal-400 md:bg-blue-200 md:text-xl;
+  }
+</style>
+```
+
+ </div>
+</div>
 
 ---
 
@@ -89,24 +207,28 @@ Hover on the bottom-left corner to see the navigation's controls panel, [learn m
 
 ### Keyboard Shortcuts
 
-|     |     |
-| --- | --- |
-| <kbd>right</kbd> / <kbd>space</kbd>| next animation or slide |
-| <kbd>left</kbd>  / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd> | previous slide |
-| <kbd>down</kbd> | next slide |
+|                                                    |                             |
+| -------------------------------------------------- | --------------------------- |
+| <kbd>right</kbd> / <kbd>space</kbd>                | next animation or slide     |
+| <kbd>left</kbd> / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
+| <kbd>up</kbd>                                      | previous slide              |
+| <kbd>down</kbd>                                    | next slide                  |
 
 <!-- https://sli.dev/guide/animations.html#click-animations -->
+
 <img
   v-click
   class="absolute -bottom-9 -left-7 w-80 opacity-50"
   src="https://sli.dev/assets/arrow-bottom-left.svg"
 />
+
 <p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
 
 ---
+
 layout: image-right
 image: https://source.unsplash.com/collection/94734566/1920x1080
+
 ---
 
 # Code
@@ -115,16 +237,16 @@ Use code snippets and get the highlighting directly![^1]
 
 ```ts {all|2|1-6|9|all}
 interface User {
-  id: number
-  firstName: string
-  lastName: string
-  role: string
+  id: number;
+  firstName: string;
+  lastName: string;
+  role: string;
 }
 
 function updateUser(id: number, update: User) {
-  const user = getUser(id)
-  const newUser = { ...user, ...update }
-  saveUser(id, newUser)
+  const user = getUser(id);
+  const newUser = { ...user, ...update };
+  saveUser(id, newUser);
 }
 ```
 
@@ -176,10 +298,9 @@ Check out [the guides](https://sli.dev/builtin/components.html) for more.
 </div>
 </div>
 
+---
 
----
-class: px-20
----
+## class: px-20
 
 # Themes
 
@@ -209,20 +330,15 @@ Read more about [How to use a theme](https://sli.dev/themes/use.html) and
 check out the [Awesome Themes Gallery](https://sli.dev/themes/gallery.html).
 
 ---
-preload: false
----
+
+## preload: false
 
 # Animations
 
 Animations are powered by [@vueuse/motion](https://motion.vueuse.org/).
 
 ```html
-<div
-  v-motion
-  :initial="{ x: -80 }"
-  :enter="{ x: 0 }">
-  Slidev
-</div>
+<div v-motion :initial="{ x: -80 }" :enter="{ x: 0 }">Slidev</div>
 ```
 
 <div class="w-60 relative mt-6">
@@ -295,6 +411,7 @@ LaTeX is supported out-of-box powered by [KaTeX](https://katex.org/).
 Inline $\sqrt{3x-1}+(1+x)^2$
 
 Block
+
 $$
 \begin{array}{c}
 
@@ -372,10 +489,11 @@ database "MySql" {
 
 [Learn More](https://sli.dev/guide/syntax.html#diagrams)
 
-
 ---
+
 layout: center
 class: text-center
+
 ---
 
 # Learn More
