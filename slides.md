@@ -130,7 +130,7 @@ h2 {
  
  <div>
  
- ## using normal css
+ ## Using normal css
 
  <br>
 
@@ -198,6 +198,22 @@ h2 {
 
  </div>
 </div>
+
+---
+
+## Modifiers
+
+Tailwind includes modifiers for just about everything you’ll ever need, including:
+
+- **Pseudo-classes**, like :hover, :focus, :first-child, and :required
+- **Pseudo-elements**, like ::before, ::after, ::placeholder, and ::selection
+- **Media queries**, like responsive breakpoints, dark mode, and prefers-reduced-motion
+
+These modifiers can even be stacked to target more specific situations, for example changing the background color in dark mode, at the medium breakpoint, on hover:
+
+```html
+<button class="md:hover:first-child:text-purple-600 ...">Save changes</button>
+```
 
 ---
 
