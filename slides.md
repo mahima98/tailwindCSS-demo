@@ -143,7 +143,6 @@ h2 {
     justify-content: center;
     align-items: center;
   }
-
   .myButton {
     padding: 10px 20px;
     background-color: rgb(101, 238, 220);
@@ -153,7 +152,6 @@ h2 {
   .myButton:hover {
     background-color: rgb(13, 85, 85);
   }
-
   @media (max-width: 800px) {
     .myButton {
       padding: 8px 16px;
@@ -182,20 +180,6 @@ h2 {
 </div>
 ```
 
-#### or
-
-```html
-<style>
-  .wrapper {
-    @apply flex w-full h-96 justify-center items-center;
-  }
-
-  .myButton {
-    @apply px-4 py-2 md:px-8 md:py-4 bg-red-300 rounded-md hover:bg-teal-400 md:bg-blue-200 md:text-xl;
-  }
-</style>
-```
-
  </div>
 </div>
 
@@ -217,106 +201,177 @@ These modifiers can even be stacked to target more specific situations, for exam
 
 ---
 
-# Navigation
+# New features added to tailwind
 
-Hover on the bottom-left corner to see the navigation's controls panel, [learn more](https://sli.dev/guide/navigation.html)
+<br>
 
-### Keyboard Shortcuts
-
-|                                                    |                             |
-| -------------------------------------------------- | --------------------------- |
-| <kbd>right</kbd> / <kbd>space</kbd>                | next animation or slide     |
-| <kbd>left</kbd> / <kbd>shift</kbd><kbd>space</kbd> | previous animation or slide |
-| <kbd>up</kbd>                                      | previous slide              |
-| <kbd>down</kbd>                                    | next slide                  |
-
-<!-- https://sli.dev/guide/animations.html#click-animations -->
-
-<img
-  v-click
-  class="absolute -bottom-9 -left-7 w-80 opacity-50"
-  src="https://sli.dev/assets/arrow-bottom-left.svg"
-/>
-
-<p v-after class="absolute bottom-23 left-45 opacity-30 transform -rotate-10">Here!</p>
-
----
-
-layout: image-right
-image: https://source.unsplash.com/collection/94734566/1920x1080
-
----
-
-# Code
-
-Use code snippets and get the highlighting directly![^1]
-
-```ts {all|2|1-6|9|all}
-interface User {
-  id: number;
-  firstName: string;
-  lastName: string;
-  role: string;
-}
-
-function updateUser(id: number, update: User) {
-  const user = getUser(id);
-  const newUser = { ...user, ...update };
-  saveUser(id, newUser);
-}
-```
-
-<arrow v-click="3" x1="400" y1="420" x2="230" y2="330" color="#564" width="3" arrowSize="1" />
-
-[^1]: [Learn More](https://sli.dev/guide/syntax.html#line-highlighting)
+- ## Just-in-Time (JIT) engine
+- ## Scroll snap Api
+- ## Color box shadow utilities
+- ## Fancy underline styles
+- ## Portrait and landscape mode
 
 <style>
-.footnotes-sep {
-  @apply mt-20 opacity-10;
-}
-.footnotes {
-  @apply text-sm opacity-75;
-}
-.footnote-backref {
-  display: none;
-}
+  h1 {
+    text-decoration: underline;
+  }
+
+  h2 {
+    margin-bottom: 4px;
+  }
+
 </style>
 
 ---
 
-# Components
+# Just-in-Time (JIT) engine
 
-<div grid="~ cols-2 gap-4">
-<div>
+The new engine generates the styles you need for your project on-demand, and might necessitate some small changes to your project depending on how you have Tailwind configured.
 
-You can use Vue components directly inside your slides.
-
-We have provided a few built-in components like `<Tweet/>` and `<Youtube/>` that you can use directly. And adding your custom components is also super easy.
+taiwind.config.js
 
 ```html
-<Counter :count="10" />
+module.exports = { mode: 'jit', // ... }
 ```
 
-<!-- ./components/Counter.vue -->
-<Counter :count="10" m="t-4" />
+<br>
 
-Check out [the guides](https://sli.dev/builtin/components.html) for more.
+- #### **Lightning fast build times.**
+- #### **Every variant is enabled out of the box.** Variants like focus-visible, active, disabled
+- #### **Generate arbitrary styles without writing custom CSS** ultra specific value can be applied ex. `top-[-113px]`
+<br>
 
-</div>
-<div>
+<br>
+<br>
+
+### Examples
 
 ```html
-<Tweet id="1390115482657726468" />
+<div class="text-[#FF0000] top-[-113px] w-[4rem]"></div>
 ```
-
-<Tweet id="1390115482657726468" scale="0.65" />
-
-</div>
-</div>
 
 ---
 
-## class: px-20
+# Scroll Snap API
+
+Utilities for controlling how strictly snap points are enforced in a snap container. [learn more](https://tailwindcss.com/docs/scroll-snap-type)
+
+<div grid="~ cols-2 gap-8">
+  <div>
+
+```html
+<div class="snap-x ...">
+  <div class="snap-center ...">
+    <img src="https://picsum.photos/200/300" />
+  </div>
+  <div class="snap-center ...">
+    <img src="https://picsum.photos/200/300" />
+  </div>
+  <div class="snap-center ...">
+    <img src="https://picsum.photos/200/300" />
+  </div>
+  <div class="snap-center ...">
+    <img src="https://picsum.photos/200/300" />
+  </div>
+</div>
+```
+
+  </div>
+
+  <div>
+    <img src="/snapcenter.png" class="h-30 rounded shadow" />
+    <br>
+    <div v-click>
+      <span>snap-start</span>
+      <img src="/snapstart.png" class="h-30 w-full rounded shadow" />
+    </div>
+  </div>
+
+</div>
+
+<!-- https://sli.dev/guide/animations.html#click-animations -->
+
+<style>
+  span {
+    font-size: 12px;
+    font-weight: 500px;
+  }
+
+  img{
+    padding-top: 10px;
+  }
+
+</style>
+
+---
+
+# Color box shadow utilities
+
+Use the shadow-{color} utilities to change the color of an existing box shadow. By default colored shadows have an opacity of 100%, but you can adjust this using the opacity modifier. [Learn more](https://tailwindcss.com/docs/box-shadow-color#setting-the-box-shadow-color)
+
+<br>
+
+  <img src="/shadow.png" class="h-30 rounded shadow" />
+  <br>
+
+```html
+<button class="bg-cyan-500 shadow-lg shadow-cyan-500/50 ...">Subscribe</button>
+<button class="bg-blue-500 shadow-lg shadow-blue-500/50 ...">Subscribe</button>
+<button class="bg-indigo-500 shadow-lg shadow-indigo-500/50 ...">
+  Subscribe
+</button>
+```
+
+---
+
+# Portrait and landscape modifiers
+
+Use the new portrait and landscape modifiers to conditionally add styles when the viewport is in a specific orientation:
+
+```html
+<div>
+  <div class="portrait:hidden">
+    <!-- ... -->
+  </div>
+  <div class="landscape:hidden">
+    <p>
+      This experience is designed to be viewed in landscape. Please rotate your
+      device to view the site.
+    </p>
+  </div>
+</div>
+```
+
+---
+
+# Multi-column layout
+
+Use as the newspaper layout kind. These are actually super useful, and are great for things like footer navigation layouts too.
+
+<div grid="~ cols-2 gap-8">
+<div>
+<img src="/multicolumn.png" class="h-70 rounded shadow" />
+</div>
+<div>
+
+```html
+<div class="columns-2 sm:columns-3">
+  <p>...</p>
+  <!-- ... -->
+</div>
+```
+
+</div>
+  </div>
+
+---
+
+# Fancy underline styles
+
+Now you can change underline colors, thickness, and more:
+<img src="/text-deco.png" class="h-30 rounded" />
+
+---
 
 # Themes
 
