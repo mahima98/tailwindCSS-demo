@@ -58,11 +58,16 @@ The last comment block of each slide will be treated as slide notes. It will be 
 <br>
 
 ```html
-<div class="px-4 py-2 text-red-100"></div>
-<div class="p-6 mx-auto rounded-xl shadow-lg flex items-center space-x-4"></div>
-<button class="bg-cyan-500 hover:bg-cyan-600"></button>
+<div class="text-red-100"></div>
+<div class="px-4 py-2 mx-2"></div>
+<div class="border border-r border-l-2"></div>
+<button class="bg-red-500 hover:bg-red-600"></button>
 <button class="sm:text-sm md:text-md lg:text-4xl"></button>
 ```
+
+<br>
+
+<img src="/padding.png" class="h-40 rounded shadow" />
 
 <br>
 
@@ -189,7 +194,7 @@ h2 {
 <br>
 
 ```html
-<div v-click class="flex w-full h-96 justify-center items-center">
+<div class="flex w-full h-[150px] justify-center items-center">
   <button
     class="px-4 py-2 md:px-8 md:py-4 bg-red-300 rounded-md hover:bg-teal-400 md:bg-blue-200 md:text-xl"
   >
@@ -209,13 +214,41 @@ Tailwind includes modifiers for just about everything you’ll ever need, includ
 
 - **Pseudo-classes**, like :hover, :focus, :first-child, and :required
 - **Pseudo-elements**, like ::before, ::after, ::placeholder, and ::selection
-- **Media queries**, like responsive breakpoints, dark mode, and prefers-reduced-motion
+- **Media queries**, like responsive breakpoints, dark mode.
+  These modifiers can even be stacked to target more specific situations, for example changing the first letter of a text on hover at the medium breakpoint.
 
-These modifiers can even be stacked to target more specific situations, for example changing the background color in dark mode, at the medium breakpoint, on hover:
+<div grid="~ cols-2 gap-4">
+<div>
 
 ```html
-<button class="md:hover:first-child:text-purple-600 ...">Save changes</button>
+//using tailwind
+
+<button class="md:hover:first-child:text-purple-600 text-black">
+  Save changes
+</button>
 ```
+
+</div>
+
+<div>
+
+```html
+//using traditional css
+<style>
+  .myButton {
+    color: black;
+  }
+  @media (max-width: 800px) {
+    .myButton:hover:first-child {
+      padding: 8px 16px;
+      background-color: purple;
+    }
+  }
+</style>
+```
+
+</div>
+</div>
 
 ---
 
