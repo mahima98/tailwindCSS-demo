@@ -252,6 +252,16 @@ Tailwind includes modifiers for just about everything you’ll ever need, includ
 
 ---
 
+# Live Demo
+
+##### Construct a simple page using commonly used features( Grid / flex)
+
+<br>
+
+<img src="/gridflex.png" class="h-100 rounded shadow" />
+
+---
+
 # New features added to tailwind
 
 <br>
