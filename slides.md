@@ -50,7 +50,7 @@ The last comment block of each slide will be treated as slide notes. It will be 
 
 ---
 
-# What is Tailwind Css?
+# What is Tailwind CSS?
 
 <br>
 
@@ -95,23 +95,6 @@ h2 {
   opacity: 75%;
 }
 </style>
-
----
-
-# why use Tailwind css?
-
-- ## It is Highly Customizable.
-- ## It Has Common Utility Patterns.
-- ## It Enables Building Complex Responsive Layouts Freely.
-- ## Just in Time engine. (JIT mode)
-
-<style>
-h2 {
-  margin-bottom: 6px;
-}
-</style>
-
----
 
 # Example/
 
@@ -212,10 +195,10 @@ h2 {
 
 Tailwind includes modifiers for just about everything you’ll ever need, including:
 
-- **Pseudo-classes**, like :hover, :focus, :first-child, and :required
+- **Pseudo-classes**, like :hover, :focus, and :first-child
 - **Pseudo-elements**, like ::before, ::after, ::placeholder, and ::selection
 - **Media queries**, like responsive breakpoints, dark mode.
-  These modifiers can even be stacked to target more specific situations, for example changing the first letter of a text on hover at the medium breakpoint.
+  These modifiers can even be stacked to target more specific situations.
 
 <div grid="~ cols-2 gap-4">
 <div>
@@ -258,7 +241,7 @@ Tailwind includes modifiers for just about everything you’ll ever need, includ
 
 <br>
 
-<img src="/gridflex.png" class="h-100 rounded shadow" />
+<img src="/demolive.jpg" class="h-100 rounded shadow" />
 
 ---
 
@@ -266,11 +249,11 @@ Tailwind includes modifiers for just about everything you’ll ever need, includ
 
 <br>
 
-- ## Just-in-Time (JIT) engine
-- ## Scroll snap Api
 - ## Color box shadow utilities
 - ## Fancy underline styles
+- ## Multi-column layout
 - ## Portrait and landscape mode
+- ## Just-in-Time (JIT) engine
 
 <style>
   h1 {
@@ -282,6 +265,133 @@ Tailwind includes modifiers for just about everything you’ll ever need, includ
   }
 
 </style>
+
+---
+
+# Color box shadow utilities
+
+Use the shadow-{color} utilities to change the color of an existing box shadow. By default colored shadows have an opacity of 100%, but you can adjust this using the opacity modifier. [Learn more](https://tailwindcss.com/docs/box-shadow-color#setting-the-box-shadow-color)
+
+<br>
+
+  <img src="/shadow.png" class="h-30 rounded shadow" />
+  <br>
+
+```html
+<button class="bg-cyan-500 shadow-lg shadow-cyan-500/50 ...">Subscribe</button>
+<button class="bg-blue-500 shadow-lg shadow-blue-500/50 ...">Subscribe</button>
+<button class="bg-indigo-500 shadow-lg shadow-indigo-500/50 ...">
+  Subscribe
+</button>
+```
+
+---
+
+# Fancy underline styles
+
+Now you can change underline colors, thickness, and more:
+
+<img src="/fancy.png" class="h-20 rounded" />
+
+```html
+<p>
+  I’m Mahima, a frontend developer based in Mauritius. Currently am doing a demo
+  on
+  <a href="#" class="underline decoration-sky-500 decoration-2">Tailwind CSS.</a
+  >. Now am in the section
+  <a
+    href="#"
+    class="underline decoration-pink-500 decoration-dotted decoration-2"
+    >Fancy underline style</a
+  >
+  and have
+  <a
+    href="#"
+    class="underline decoration-indigo-500 decoration-wavy decoration-2"
+    >portrait and landscape mode</a
+  >
+  next.
+</p>
+```
+
+---
+
+# Multi-column layout
+
+Use as the newspaper layout kind. These are actually super useful, and are great for things like footer navigation layouts too.
+
+<div grid="~ cols-2 gap-8">
+<div>
+<img src="/multicolumn.png" class="h-70 rounded shadow" />
+</div>
+<div>
+
+```html
+<div class="columns-2 sm:columns-3">
+  <p>...</p>
+  <!-- ... -->
+</div>
+```
+
+</div>
+  </div>
+
+---
+
+# Portrait and landscape modifiers
+
+Use the new portrait and landscape modifiers to conditionally add styles when the viewport is in a specific orientation:
+
+```html
+<div>
+  <div class="portrait:hidden">
+    <!-- ... -->
+  </div>
+  <div class="landscape:hidden">
+    <p>
+      This experience is designed to be viewed in landscape. Please rotate your
+      device to view the site.
+    </p>
+  </div>
+</div>
+```
+
+##### using normal CSS
+
+<div grid="~ cols-2 gap-8">
+<div>
+
+```html
+<style>
+  @media (orientation: landscape) {
+    body {
+      flex-direction: row;
+    }
+  }
+</style>
+```
+
+</div>
+<div>
+
+```html
+<style>
+  @media (orientation: portrait) {
+    body {
+      flex-direction: column;
+    }
+  }
+</style>
+```
+
+</div>
+</div>
+
+<style>
+  h5 {
+    font-size: 12px;
+  }
+  </style>
 
 ---
 
@@ -313,146 +423,18 @@ module.exports = { mode: 'jit', // ... }
 
 ---
 
-# Scroll Snap API
+# why use Tailwind CSS?
 
-Utilities for controlling how strictly snap points are enforced in a snap container. [learn more](https://tailwindcss.com/docs/scroll-snap-type)
-
-<div grid="~ cols-2 gap-8">
-  <div>
-
-```html
-<div class="snap-x ...">
-  <div class="snap-center ...">
-    <img src="https://picsum.photos/200/300" />
-  </div>
-  <div class="snap-center ...">
-    <img src="https://picsum.photos/200/300" />
-  </div>
-  <div class="snap-center ...">
-    <img src="https://picsum.photos/200/300" />
-  </div>
-  <div class="snap-center ...">
-    <img src="https://picsum.photos/200/300" />
-  </div>
-</div>
-```
-
-  </div>
-
-  <div>
-    <img src="/snapcenter.png" class="h-30 rounded shadow" />
-    <br>
-    <div v-click>
-      <span>snap-start</span>
-      <img src="/snapstart.png" class="h-30 w-full rounded shadow" />
-    </div>
-  </div>
-
-</div>
-
-<!-- https://sli.dev/guide/animations.html#click-animations -->
+- ## It is Highly Customizable.
+- ## It Has Common Utility Patterns.
+- ## It Enables Building Complex Responsive Layouts Freely.
+- ## Just in Time engine. (JIT mode)
 
 <style>
-  span {
-    font-size: 12px;
-    font-weight: 500px;
-  }
-
-  img{
-    padding-top: 10px;
-  }
-
+h2 {
+  margin-bottom: 6px;
+}
 </style>
-
----
-
-# Color box shadow utilities
-
-Use the shadow-{color} utilities to change the color of an existing box shadow. By default colored shadows have an opacity of 100%, but you can adjust this using the opacity modifier. [Learn more](https://tailwindcss.com/docs/box-shadow-color#setting-the-box-shadow-color)
-
-<br>
-
-  <img src="/shadow.png" class="h-30 rounded shadow" />
-  <br>
-
-```html
-<button class="bg-cyan-500 shadow-lg shadow-cyan-500/50 ...">Subscribe</button>
-<button class="bg-blue-500 shadow-lg shadow-blue-500/50 ...">Subscribe</button>
-<button class="bg-indigo-500 shadow-lg shadow-indigo-500/50 ...">
-  Subscribe
-</button>
-```
-
----
-
-# Portrait and landscape modifiers
-
-Use the new portrait and landscape modifiers to conditionally add styles when the viewport is in a specific orientation:
-
-```html
-<div>
-  <div class="portrait:hidden">
-    <!-- ... -->
-  </div>
-  <div class="landscape:hidden">
-    <p>
-      This experience is designed to be viewed in landscape. Please rotate your
-      device to view the site.
-    </p>
-  </div>
-</div>
-```
-
----
-
-# Multi-column layout
-
-Use as the newspaper layout kind. These are actually super useful, and are great for things like footer navigation layouts too.
-
-<div grid="~ cols-2 gap-8">
-<div>
-<img src="/multicolumn.png" class="h-70 rounded shadow" />
-</div>
-<div>
-
-```html
-<div class="columns-2 sm:columns-3">
-  <p>...</p>
-  <!-- ... -->
-</div>
-```
-
-</div>
-  </div>
-
----
-
-# Fancy underline styles
-
-Now you can change underline colors, thickness, and more:
-
-<img src="/fancy.png" class="h-20 rounded" />
-
-```html
-<p>
-  I’m Mahima, a frontend developer based in Mauritius. Currently am doing a demo
-  on
-  <a href="#" class="underline decoration-sky-500 decoration-2">Tailwind CSS.</a
-  >. Now am in the section
-  <a
-    href="#"
-    class="underline decoration-pink-500 decoration-dotted decoration-2"
-    >Fancy underline style</a
-  >
-  and have
-  <a
-    href="#"
-    class="underline decoration-indigo-500 decoration-wavy decoration-2"
-    >portrait and landscape mode</a
-  >
-  next.
-</p>
-```
 
 ---
 
