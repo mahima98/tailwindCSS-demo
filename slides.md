@@ -291,7 +291,7 @@ Use the shadow-{color} utilities to change the color of an existing box shadow. 
 
 Now you can change underline colors, thickness, and more:
 
-<img src="/fancy.png" class="h-20 rounded" />
+<img src="/fancy.png" class="h-15 rounded" />
 
 ```html
 <p>
@@ -348,10 +348,8 @@ Use the new portrait and landscape modifiers to conditionally add styles when th
     <!-- ... -->
   </div>
   <div class="landscape:hidden">
-    <p>
-      This experience is designed to be viewed in landscape. Please rotate your
-      device to view the site.
-    </p>
+    This experience is designed to be viewed in landscape. Please rotate your
+    device to view the site.
   </div>
 </div>
 ```
