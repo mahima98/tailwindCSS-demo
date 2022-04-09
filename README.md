@@ -1,6 +1,6 @@
 # My Tailwind CSS presentation.
 
-<img src="/screen.jpg"/>
+<img src="public/screen.jpg"/>
 
 # Slides was made using [Slidev](https://github.com/slidevjs/slidev)!
 
