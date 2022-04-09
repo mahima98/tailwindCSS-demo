@@ -96,6 +96,8 @@ h2 {
 }
 </style>
 
+---
+
 # Example/
 
 <div grid="~ cols-3 gap-4">
@@ -297,8 +299,10 @@ Now you can change underline colors, thickness, and more:
 <p>
   I’m Mahima, a frontend developer based in Mauritius. Currently am doing a demo
   on
-  <a href="#" class="underline decoration-sky-500 decoration-2">Tailwind CSS.</a
-  >. Now am in the section
+  <a href="#" class="underline decoration-sky-500 decoration-2"
+    >Tailwind CSS.</a
+  >
+  Now am in the section
   <a
     href="#"
     class="underline decoration-pink-500 decoration-dotted decoration-2"
