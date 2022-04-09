@@ -1,4 +1,4 @@
-# My Tailwind CSS presention.
+# My Tailwind CSS presentation.
 
 <img src="/screen.jpg"/>
 
